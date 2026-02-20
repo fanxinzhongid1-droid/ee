@@ -130,7 +130,7 @@
     .hero{
       margin-top:16px;
       display:grid;
-      grid-template-columns: 1.35fr .65fr;
+      grid-template-columns: 1fr;
       gap:14px;
     }
     @media (max-width: 980px){
@@ -374,47 +374,6 @@
       color: rgba(255,255,255,.86);
     }
 
-    /* 专业小功能条 */
-    .probar{
-      margin-top: 14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      padding: 14px 16px;
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.18);
-      border-radius: 16px;
-      box-shadow: var(--shadow2);
-    }
-    .pro-left{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      color: var(--muted);
-      font-size:12px;
-    }
-    .pro-kpi{
-      display:flex; gap:10px; flex-wrap:wrap;
-      align-items:center;
-    }
-    .kpi{
-      padding: 9px 11px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      min-width: 140px;
-    }
-    .kpi .k{ font-size:11px; color: rgba(255,255,255,.60); }
-    .kpi .v{
-      margin-top:4px;
-      font-weight:800;
-      letter-spacing:.3px;
-      color: rgba(255,255,255,.92);
-    }
-
     footer{
       margin-top: 14px;
       padding: 14px 16px;
@@ -444,6 +403,43 @@
       canvas#bg{display:none !important;}
     }
     
+
+    /* ========== 手机竖屏优化：更干净、更大、更好点 ========== */
+    header{ justify-content:center; }
+    .title .s{ display:none; } /* 顶部副标题手机上收起，更干净 */
+    .hero{ grid-template-columns: 1fr; }
+    .slider{ height: 320px; }
+    .cta{ min-height:auto; padding: 16px; }
+    .cta h1{ font-size: 24px; }
+    .cta p{ font-size: 14px; margin: 8px 0 12px; }
+    .tap-hint{
+      margin-top: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,.72);
+      text-align:center;
+      animation: bob 1.2s ease-in-out infinite;
+    }
+    @keyframes bob{
+      0%,100%{ transform: translateY(0); opacity:.78; }
+      50%{ transform: translateY(6px); opacity:1; }
+    }
+    /* 标签按钮更适合手机点击 */
+    .badge span{
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+    /* 下方卡片：更大圆角/间距 */
+    .block{ min-height: auto; }
+    .thumb{ height: 160px; }
+    @media (max-width: 520px){
+      .wrap{ width: min(980px, 94vw); padding: 16px 0 28px; }
+      header{ padding: 14px 14px; }
+      .logo{ width:42px; height:42px; border-radius: 14px; }
+      .title .h{ font-size: 18px; }
+      .slider{ height: 300px; }
+      .btn{ width:100%; font-size: 17px; padding: 16px 16px; }
+    }
+
 </style>
 </head>
 
@@ -459,12 +455,6 @@
           <div class="h">19年老平台信誉第一</div>
           <div class="s">美女直播 · PG电子 · 德州扑克 · 百家乐 · 足球 · 一键跳转</div>
         </div>
-      </div>
-
-      <div class="right">
-        <div class="pill"><span class="dotlive"></span> <span>LIVE</span></div>
-        <div class="pill" id="clock">--:--:--</div>
-        <div class="pill">本地页面 file://</div>
       </div>
     </header>
 
@@ -494,18 +484,14 @@
       <div class="card cta">
         <div>
           <h1>🔥 一键进入你的站点</h1>
-          <p>
-            这是你的动态主页（本地运行）。中间按钮点击后会跳转到你的网址：
-            <b>ee.jjzb.me</b>。<br>
-            下方还有百家乐/足球等展示区块，整体更“专业官网风格”。
-          </p>
+          <p>👇 点击下面按钮，直接进入站点</p>
 
           <a class="btn" href="https://ee.jjzb.me" target="_blank" rel="noopener">
             🚀 点击进入 ee.jjzb.me
           </a>
 
-          <div class="note">提示：图片来自本地文件（不联网也能显示）。如果不显示，通常是图片没放同文件夹或文件名不对。</div>
-        </div>
+          <div class="tap-hint">👇 点击按钮进入</div>
+</div>
 
         <div class="badge">
           <span>👩‍💻 美女直播</span>
@@ -526,7 +512,7 @@
           <img src="./images/baccarat.png" loading="lazy" decoding="async" alt="百家乐发牌员/牌桌" />
           <div class="label">百家乐发牌员</div>
         </div>
-        <p>展示区域：百家乐发牌员图片已替换完成。</p>
+        
         <div class="badge" style="margin-top:12px">
           <span>路纸展示</span><span>庄/闲</span><span>实时动画</span>
         </div>
@@ -559,52 +545,22 @@
       </div>
     </section>
 
-    <!-- 专业信息条（看起来更“官网”） -->
-    <div class="probar">
-      <div class="pro-left">
-        <span>✅ 专业版UI已启用</span>
-        <span>•</span>
-        <span>本地图片预加载</span>
-        <span>•</span>
-        <span>深色霓虹 + 粒子背景</span>
-      </div>
-
-      <div class="pro-kpi">
-        <div class="kpi">
-          <div class="k">当前状态</div>
-          <div class="v" id="status">运行中</div>
+<div class="pro-kpi">
+<div class="v"</div>
         </div>
-        <div class="kpi">
-          <div class="k">轮播间隔</div>
-          <div class="v"><span id="intervalLabel">4.5</span> 秒</div>
+<div class="v">秒</div>
         </div>
       </div>
     </div>
-
-    <footer>
-      <div>本地动态主页：index.html（单文件专业版）</div>
-      <div>小技巧：把 index.html 拖到 Dock，之后一键打开。</div>
-    </footer>
-  </div>
+</div>
 
   <script>
-    // ===== 1) 时钟 =====
-    const clockEl = document.getElementById('clock');
-    const pad = n => String(n).padStart(2,'0');
-    function tick(){
-      const d = new Date();
-      clockEl.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-    }
-    setInterval(tick, 1000); tick();
-
-    // ===== 2) 本地图片预加载 + 轮播 =====
+// ===== 2) 本地图片预加载 + 轮播 =====
     const slidesWrap = document.getElementById('slides');
     const imgs = Array.from(slidesWrap.querySelectorAll('img'));
     const dotsWrap = document.getElementById('dots');
     const slideTitle = document.getElementById('slideTitle');
-    const intervalLabel = document.getElementById('intervalLabel');
-
-    const titles = [
+const titles = [
       "2026世界杯足球",
       "美女直播",
       "娱乐城氛围",
@@ -613,9 +569,7 @@
 
     // 轮播参数
     const INTERVAL = 4500;
-    intervalLabel.textContent = (INTERVAL/1000).toFixed(1);
-
-    // 生成 dots
+// 生成 dots
     imgs.forEach((_, i) => {
       const d = document.createElement('div');
       d.className = 'dot' + (i===0 ? ' on' : '');
@@ -679,7 +633,6 @@
     slider.addEventListener('mouseenter', stop);
     slider.addEventListener('mouseleave', start);
 
-
     // 减少动态效果：不自动轮播
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -713,8 +666,6 @@
 
     if (!prefersReduced) start();
     else stop();
-
-
 
     // ===== 3) 粒子背景（专业版：更细腻 + 线条连接）=====
     const canvas = document.getElementById('bg');
@@ -789,12 +740,6 @@
     if(!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)){
       draw();
     }
-
-    // ===== 4) 状态显示（可有可无，但显得更“系统”）=====
-    const statusEl = document.getElementById('status');
-    setInterval(()=>{
-      statusEl.textContent = document.hidden ? '后台' : '运行中';
-    }, 800);
-  </script>
+</script>
 </body>
 </html>
